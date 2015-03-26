@@ -1,0 +1,409 @@
+<html>
+    <head>
+        <title>{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <style>
+            a {
+                text-align: center;
+                color: inherit;
+                text-decoration: none;
+                padding: 5px;
+            }
+
+            a:hover {
+                font-style: italic;
+            }
+
+            body {
+                margin: 0px auto;
+                background-color: {BackgroundColor};
+                font-family: "Helvetica" ;
+            }
+
+            h1 {
+                padding-top: 10px;
+            }
+
+            table {
+                float: right;
+            }
+
+            td {
+                text-align: right;
+                margin-bottom: 0px;
+            }
+
+            td p {
+                margin: 0px;
+            }
+
+            title {
+                text-align: center;
+            }
+
+            #avatar {
+                float: left;
+                margin: 16px;
+                padding: 8px;
+                border-radius: 8px;
+                background-color: white;
+            }
+
+            #finalThoughts {
+                background-color: rgba(97,219,234,.6);
+                text-align: center;
+                margin: 0px auto;
+            }
+
+            #header {
+                width: 700px;
+                margin-top: -21px;
+            }
+
+            #links {
+                width: 500px;
+                margin: 0px auto;
+                margin-top: 0px;
+                margin-bottom: 10px;
+            }
+
+            @keyframes fadeIn {
+                0% {background-color: rgba(97,219,234,.6);}
+                20% {background-color: rgba(97,128,234,1);}
+                40% {background-color: rgba(97,219,234,.8);}
+                100% {background-color: rgba(97,219,234,.6);}
+            }
+
+            @keyframes fadeStart {
+                0% {background-color: rgba(97,219,234,1);}
+                50% {background-color: rgba(97,219,234,1);}
+                100% {background-color: rgba(97,219,234,.6);}
+            }
+
+            @-webkit-keyframes fadeIn {
+                0% {background-color: rgba(97,219,234,.6);}
+                20% {background-color: rgba(97,128,234,1);}
+                40% {background-color: rgba(97,219,234,.8);}
+                100% {background-color: rgba(97,219,234,.6);}
+            }
+
+            @-webkit-keyframes fadeStart {
+                0% {background-color: rgba(97,219,234,1);}
+                50% {background-color: rgba(97,219,234,1);}
+                100% {background-color: rgba(97,219,234,.6);}
+            }
+
+            .caption {
+                width: 400px;
+                float: left;
+                border-style: groove;
+                border-width: 0px;
+                margin: 10px;
+                background-color: #eeeeee;
+                border-radius: 10px;
+                border-color: #ffffff;
+                text-align: right;
+                box-shadow: 10px 10px 5px rgba(128,128,128,.5);
+                padding-right: 10px;
+            }
+
+            .caption_text {
+                width: 400px;
+                float: left;
+                border-style: groove;
+                border-width: 0px;
+                margin: 10px;
+                background-color: #eeeeee;
+                border-radius: 10px;
+                border-color: #ffffff;
+                text-align: right;
+                box-shadow: 10px 10px 5px rgba(128,128,128,.5);
+                padding-right: 10px;
+            }
+
+            .clear {
+                clear: both;
+            }
+
+            .follow_button {
+                position: absolute;
+                right: 0px;
+            }
+
+            .frame {
+                border-style: solid;
+                border-width: 0px;
+                padding: 10px;
+                padding-bottom: 10px;
+                background-color: #eeeeee;
+                border-color: inherit;
+            }
+
+            .square_border {
+                border: 20px solid transparent;
+                border-image: url(http://static.tumblr.com/tzlfjco/v7Inhgwg1/background-squares.png) 10 stretch;
+                -moz-border-image: url(http://static.tumblr.com/tzlfjco/v7Inhgwg1/background-squares.png) 10 stretch;
+                -webkit-border-image: url(http://static.tumblr.com/tzlfjco/v7Inhgwg1/background-squares.png) 10 stretch;
+                -o-border-image: url(http://static.tumblr.com/tzlfjco/v7Inhgwg1/background-squares.png) 10 stretch;
+                width: 700px;
+                margin: 0px auto;
+                margin-bottom: 20px;
+                margin-top: 10px;
+                border-color: {BackgroundColor};
+
+            }
+
+            .square_border .content {
+                background-color: rgba(97,219,234,.6);
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin: 0px auto;
+                text-align: center;
+            }
+
+            .likeButton {
+                border-radius: 5px;
+                background-color: #888888;
+                float: right;
+                padding-top: 10px;
+                padding-right: 10px;
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .photograph {
+                float: right;
+                right: 10px;
+                box-shadow: 10px 10px 5px rgba(128,128,128,.5);
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-bottom: 20px;
+                background-color: #ffffff;
+                opacity: 1.0;
+            }
+
+            .post {
+                width: 540px;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 20px;
+                margin: 0px auto;
+                margin-bottom: 10px;
+                background-color: rgba(97,219,234,.6);
+                -webkit-animation: fadeOut 4s;
+                animation: fadeOut 4s;
+            }
+
+            .reblogButton {
+                border-radius: 5px;
+                background-color: #888888;
+                float: right;
+                padding: 5px;
+                width: 30px;
+                height: 30px;
+            }
+
+            .separate {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 20px;
+                margin-right: 10px;
+                height: 3px;
+                background-color: #AAAAAA;
+            }
+
+            .tags {
+                font-family: "MV Boli";
+                text-align: center;
+                color: #CC3333;
+                font-size: 20px;
+            }
+
+            .text {
+                font-family: "Arial";
+                width: 420px;
+            }
+
+            .text h1 {
+                text-align: center;
+            }
+
+        </style>
+        <script>
+            $(document).ready(function(){
+                $(".photo").hover(function(){
+                    $(this).animate({width:'+=430px'},"slow",function(){
+                        $(this).find(".caption").fadeIn();
+                    });
+                },
+                function(){
+                    $(this).stop();
+                    $(".caption").hide();
+                    $(this).animate({width:'540px'},"slow");
+
+
+                });
+            });
+            $(document).ready(function(){
+                $(".caption").hide();
+            })
+        </script>
+    </head>
+    <body>
+
+        <div class="square_border">
+            <div id="header" class="content">
+                <div id="avatar">
+                    <img src="{PortraitURL-128}">
+                </div>
+                <h1>{Title}</h1>
+                <p>{Description}</p>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="links" class="square_border">
+            {block:HasPages}
+                <p class="content">
+                    <a href="{BlogURL}">Home</a>
+                    {block:Pages}
+                        <a href="{URL}">{Label}</a>
+                    {/block:Pages}
+                    <a href="/archive">Archive </a>
+                </p>
+            {/block:HasPages}
+        </div>
+
+        {block:Posts}
+            {block:Text}
+                <div class="post" style="width:430px;">
+                <div class="text">
+                <div class="caption_text">
+                    {block:Title}<h1>{Title}</h1>{/block:Title}
+                    <div class="separate"></div>
+                    <p>{Body}</p>
+                </div>
+                <div class="clear"></div>
+                </div></div>
+            {/block:Text}
+
+            {block:Photo}
+                <div class="photo post">
+                    {block:Caption}
+                    <div class="caption">
+                        <i>{Caption}</i>
+                        {block:Date}
+                            <div class="separate"></div>
+                            <div class="date">
+                                <p><i>{DayOfWeek}, {Month} {DayOfMonth}, {Year} </i></p>
+                            </div>
+                        {/block:Date}
+                        {block:Exif}
+                            <div class="separate"></div>
+                            <table class="exif">
+                                {block:Camera}
+                                    <tr>
+                                        <td>
+                                            <p><b> Camera: </b></p>
+                                        </td>
+                                        <td>
+                                            <p> {Camera} </p>
+                                        </td>
+                                    </tr>
+                                {/block:Camera}
+                                {block:ISO}
+                                    <tr>
+                                        <td>
+                                            <p><b> ISO: </b></p>
+                                        </td>
+                                        <td>
+                                            <p> {ISO} </p>
+                                        </td>
+                                    </tr>
+                                {/block:ISO}
+                                {block:Aperture}
+                                    <tr>
+                                        <td>
+                                            <p><b> Aperture: </b></p>
+                                        </td>
+                                        <td>
+                                            <p> {Aperture} </p>
+                                        </td>
+                                    </tr>
+                                {/block:Aperture}
+                                {block:Exposure}
+                                    <tr>
+                                        <td>
+                                            <p><b> Exposure: </b></p>
+                                        </td>
+                                        <td>
+                                            <p> {Exposure} </p>
+                                        </td>
+                                    </tr>
+                                {/block:Exposure}
+                                {block:FocalLength}
+                                    <tr>
+                                        <td>
+                                            <p><b> Focal Length: </b></p>
+                                        </td>
+                                        <td>
+                                            <p> {FocalLength} </p>
+                                        </td>
+                                    </tr>
+                                {/block:FocalLength}
+                            </table>
+                            <div class="clear"></div>
+                        {/block:Exif}
+                        {block:HighRes} <div class="high_res">
+                            <div class="separate"></div>
+                            <a href="{PhotoURL-HighRes}">View Photo in High Resolution</a>
+                        </div>{/block:HighRes}
+                        <div class="separate"></div>
+                        <div class="reblogButton">{ReblogButton}</div>
+                        <div class="likeButton">{LikeButton}</div>
+                    </div>
+
+                    {/block:Caption}
+                        <a href="{Permalink}">
+                            <div class="photograph">
+                                <div class="frame">
+                                    <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                                {block:HasTags}
+                                    <div class="tags">
+                                        <p>
+                                            {block:Tags}
+                                                #{Tag}
+                                            {/block:Tags}
+                                        </p>
+                                    </div>
+                                {/block:HasTags}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+                {/block:Photo}
+
+        {/block:Posts}
+
+        <div class="clear"></div>
+
+        <div class="square_border">
+            <div id="finalThoughts">
+                {block:Pagination}
+                    {block:PreviousPage}
+                        <a href="{PreviousPage}">&#171; Previous</a>
+                    {/block:PreviousPage}
+                    <a href="/archive">Archive</a>
+                    {block:NextPage}
+                        <a href="{NextPage}">Next &#187;</a>
+                    {/block:NextPage}
+                {/block:Pagination}
+        </div>
+        </div>
+    </body>
+</html>
